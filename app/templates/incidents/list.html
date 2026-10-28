@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Incidents — IT Operations Suite{% endblock %}
+
+{% block content %}
+<section>
+  <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-2xl font-semibold text-white">IT Incident Tracking</h1>
+      <p class="mt-1 text-sm text-slate-400">
+        Active and resolved faults across network devices.
+      </p>
+    </div>
+    <p class="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-slate-300 ring-1 ring-slate-800">
+      {{ incidents|length }} incident{% if incidents|length != 1 %}s{% endif %}
+    </p>
+  </div>
+
+  <div class="overflow-x-auto rounded-lg ring-1 ring-slate-800">
+    <table class="min-w-full divide-y divide-slate-800 text-left text-sm">
+      <thead class="bg-slate-900 text-xs uppercase tracking-wide text-slate-400">
+        <tr>
+          <th class="px-4 py-3 font-medium">ID</th>
+          <th class="px-4 py-3 font-medium">Device</th>
+          <th class="px-4 py-3 font-medium">Location</th>
+          <th class="px-4 py-3 font-medium">Fault</th>
+          <th class="px-4 py-3 font-medium">Status</th>
+          <th class="px-4 py-3 font-medium">Priority</th>
+          <th class="px-4 py-3 font-medium">Resolution Time</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800 bg-slate-950/60">
+        {% for incident in incidents %}
+        <tr class="hover:bg-slate-900/70">
+          <td class="whitespace-nowrap px-4 py-3 text-slate-400">#{{ incident.id }}</td>
+          <td class="whitespace-nowrap px-4 py-3 font-medium text-slate-100">
+            {{ incident.device_id }}
+          </td>
+          <td class="px-4 py-3 text-slate-300">{{ incident.location }}</td>
+          <td class="max-w-xs px-4 py-3 text-slate-300">{{ incident.fault_description }}</td>
+          <td class="whitespace-nowrap px-4 py-3">
+            {% if incident.status == "Open" %}
+            <span class="rounded bg-danger/15 px-2 py-0.5 text-xs font-medium text-danger">
+              {{ incident.status }}
+            </span>
+            {% elif incident.status == "In Progress" %}
+            <span class="rounded bg-warn/15 px-2 py-0.5 text-xs font-medium text-warn">
+              {{ incident.status }}
+            </span>
+            {% elif incident.status == "Resolved" %}
+            <span class="rounded bg-ok/15 px-2 py-0.5 text-xs font-medium text-ok">
+              {{ incident.status }}
+            </span>
+            {% else %}
+            <span class="rounded bg-slate-700/40 px-2 py-0.5 text-xs font-medium text-slate-300">
+              {{ incident.status }}
+            </span>
+            {% endif %}
+          </td>
+          <td class="whitespace-nowrap px-4 py-3">
+            {% if incident.priority == "Critical" %}
+            <span class="font-semibold text-danger">{{ incident.priority }}</span>
+            {% elif incident.priority == "High" %}
+            <span class="font-semibold text-warn">{{ incident.priority }}</span>
+            {% else %}
+            <span class="text-slate-300">{{ incident.priority }}</span>
+            {% endif %}
+          </td>
+          <td class="whitespace-nowrap px-4 py-3 text-slate-400">
+            {% if incident.resolution_time %}
+              {{ incident.resolution_time.strftime("%Y-%m-%d %H:%M") }}
+            {% else %}
+              —
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="7" class="px-4 py-10 text-center text-slate-500">
+            No incidents logged yet.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

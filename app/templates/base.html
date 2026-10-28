@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}IT Operations Suite{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0f172a",
+            slatepanel: "#1e293b",
+            accent: "#0ea5e9",
+            warn: "#f59e0b",
+            danger: "#ef4444",
+            ok: "#22c55e",
+          },
+          fontFamily: {
+            display: ["Segoe UI", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 font-display">
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="/" class="text-lg font-semibold tracking-tight text-white">
+        IT Operations Suite
+      </a>
+      <nav class="flex gap-4 text-sm text-slate-300">
+        <a href="/incidents/" class="hover:text-accent">Incidents</a>
+        <a href="/uptime/" class="hover:text-accent">Uptime</a>
+        <a href="/logs/" class="hover:text-accent">Logs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

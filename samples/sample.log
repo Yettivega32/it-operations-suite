@@ -1,0 +1,12 @@
+2026-10-28 08:01:12 INFO  device=SCR-01 heartbeat ok
+2026-10-28 08:02:44 ERROR error_code=E1001 link down on screen SCR-02
+2026-10-28 08:03:10 WARN  retrying connection to SCR-02
+2026-10-28 08:03:55 ERROR error_code=E1001 link down on screen SCR-02
+2026-10-28 08:05:01 CRITICAL ERR_BGP_FLAP peer 10.0.0.1
+2026-10-28 08:06:22 ERROR error_code=E2044 DHCP lease exhausted
+2026-10-28 08:07:09 FAIL authentication timeout for user nocops
+2026-10-28 08:08:33 ERROR error_code=E1001 link down on screen SCR-05
+2026-10-28 08:09:18 FATAL ERR_DISK_FULL /var/log partition
+2026-10-28 08:10:02 ERROR error_code=E2044 DHCP lease exhausted
+2026-10-28 08:11:40 ERROR error_code=E3010 fan sensor threshold exceeded
+2026-10-28 08:12:15 ERROR error_code=E1001 link down on screen SCR-02

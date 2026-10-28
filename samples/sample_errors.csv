@@ -1,0 +1,10 @@
+timestamp,device,error_code,message
+2026-10-28 08:02:44,SCR-02,E1001,link down
+2026-10-28 08:03:55,SCR-02,E1001,link down
+2026-10-28 08:05:01,RTR-01,ERR_BGP_FLAP,peer session reset
+2026-10-28 08:06:22,DHCP-01,E2044,lease pool exhausted
+2026-10-28 08:08:33,SCR-05,E1001,link down
+2026-10-28 08:09:18,LOG-01,ERR_DISK_FULL,partition full
+2026-10-28 08:10:02,DHCP-01,E2044,lease pool exhausted
+2026-10-28 08:11:40,SW-03,E3010,fan sensor threshold
+2026-10-28 08:12:15,SCR-02,E1001,link down
